@@ -12,11 +12,13 @@ var warningDisp = document.querySelector("#warning");
 var game = {
 	availableWords: ["simon", "ricther"],
 	currentWord: "",
+	displayWord: [],
 	availableLetters: [],
 	guesses: 0,
 	wins: 0,
-	lettersLeft: 0,
+	lettersGuessed: 0,
 	isGameOver: false,
+	isShown: false,
 	wordDisp: {},
 	guessDisp: {},
 	winDisp: {},
@@ -39,12 +41,24 @@ var game = {
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
         't', 'u', 'v', 'w', 'x', 'y', 'z'],
         this.currentWord = this.availableWords[0];
+        this.lettersGuessed = 0;
         console.log(this.currentWord);
 
         // Reset Game Display
 		this.displayGame();
 		this.wordDisp.textContent = "_";
 		this.guessLtrDisp.textContent = "";
+		this.displayWord = [];
+		for(var i=0; i<this.currentWord.length; i++){
+	        if(this.currentWord.charAt(i).match(/[a-z]/i)){
+	          this.displayWord.push("_");
+	        } else {
+	          this.displayWord.push(" ");
+	        }
+	    }
+
+	    this.wordDisp.textContent = this.displayWord.join(" ");
+
 	},
 	displayGame: function(){
 		
@@ -59,22 +73,27 @@ var game = {
 			this.warnDisp.textContent = "";
 			// if it is we check it versus the current word
 			if(this.currentWord.includes(userGuess)){
+				console.log("Letter Pressed " + userGuess);
+				
 
-				for(i = 0; i < this.currentWord.length; i++){
-					// loop through the current Word
-					this.lettersLeft++;
-					// count number of letters matched
-					// update display to show matched letters
-					// update available letters
-					console.log("reach the check loop");
-					
-				}
+			     for(j=0; j<this.currentWord.length; j++){
+			     	console.log("Display ran");
+			        if(this.currentWord.charAt(j)===userGuess){
+			          this.displayWord[j] = userGuess;
+			          this.lettersGuessed++;
+			          this.wordDisp.textContent = this.displayWord.join(" ");
+			          console.log(this.letterGuessed);
+			        }
+			     }
+
+			     
 				// check if user guesses has reached length of the word
-				if(this.lettersLeft === this.currentWord.length ){
+				if(this.lettersGuessed === this.currentWord.length ){
 					// if so user has won!
+					console.log("User won!");
 					this.wins++;
 					this.isGameOver = true;
-					this.wordDisp.textContent = this.currentWord;
+					this.wordDisp.textContent = this.displayWord.join(" ");
 				}
 						
 				
@@ -107,7 +126,6 @@ document.onkeyup = function(e){
 		// Check User Input and see if they won
 		game.checkGuess(e.key);
 		game.displayGame();
-		console.log("Game Still running");
 	} else {
 		// Restart the game
 		game.startGame(currentWordDisp,currentGuessDisp, winsDisp, guessLetterDisp, warningDisp);
