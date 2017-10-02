@@ -10,7 +10,7 @@ var warningDisp = document.querySelector("#warning");
 
 //Game Object
 var game = {
-	availableWords: ["simon", "ricther"],
+	availableWords: ["simon", "ricther", "zombie", "axeman", "alucard", "dracula"],
 	currentWord: "",
 	displayWord: [],
 	availableLetters: [],
@@ -34,15 +34,15 @@ var game = {
 		this.warnDisp = warningDisp;
 		this.guessLtrDisp = guessLetterDisp;
 
+
 		// Setup Game Values
 		this.isGameOver = false;
 		this.guesses = 16;
 		this.availableLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
         't', 'u', 'v', 'w', 'x', 'y', 'z'],
-        this.currentWord = this.availableWords[0];
+        this.currentWord = this.availableWords[Math.floor(Math.random() * this.availableWords.length)];
         this.lettersGuessed = 0;
-        console.log(this.currentWord);
 
         // Reset Game Display
 		this.displayGame();
@@ -56,8 +56,8 @@ var game = {
 	          this.displayWord.push(" ");
 	        }
 	    }
-
 	    this.wordDisp.textContent = this.displayWord.join(" ");
+	    this.warnDisp.textContent = "";
 
 	},
 	displayGame: function(){
@@ -71,59 +71,66 @@ var game = {
 		// Check if what they selected is available
 		if(this.availableLetters.indexOf(userGuess) > -1){
 			this.warnDisp.textContent = "";
+
 			// if it is we check it versus the current word
 			if(this.currentWord.includes(userGuess)){
-				console.log("Letter Pressed " + userGuess);
 				
+					for(var i=0; i<this.currentWord.length; i++){
+				        if(this.currentWord.charAt(i)===userGuess){
+				          this.displayWord[i] = userGuess;
+				          this.lettersGuessed++;
+				          this.wordDisp.textContent = this.displayWord.join(" ");
+				          this.availableLetters = this.availableLetters.filter( a => a !== userGuess);
+				        }
+				    }
 
-			     for(j=0; j<this.currentWord.length; j++){
-			     	console.log("Display ran");
-			        if(this.currentWord.charAt(j)===userGuess){
-			          this.displayWord[j] = userGuess;
-			          this.lettersGuessed++;
-			          this.wordDisp.textContent = this.displayWord.join(" ");
-			          console.log(this.letterGuessed);
-			        }
-			     }
+			     
 
 			     
 				// check if user guesses has reached length of the word
 				if(this.lettersGuessed === this.currentWord.length ){
 					// if so user has won!
-					console.log("User won!");
 					this.wins++;
 					this.isGameOver = true;
 					this.wordDisp.textContent = this.displayWord.join(" ");
+					this.warnDisp.textContent = "You Won!!! Press Any Key to restart!";
 				}
 						
 				
 			} else {
 				// otherwise then we see if they still have guesses left
-				if(this.guesses < 1){
-					// if they dont then Game Over
-					this.isGameOver = true;
-				} else {
+				if(this.guesses > 0){
 					// if they do then we remove a guess and add their current guess to the list of guessed letters and remove from valid guesses
 					this.availableLetters = this.availableLetters.filter( a => a !== userGuess);
 					this.guesses--;
-					this.guessLtrDisp.textContent += userGuess + ", " ;
+					this.guessLtrDisp.textContent += userGuess + " " ;
+				} else {
+					// if they dont then Game Over
+					this.warnDisp.textContent = "You lost! Press Any Key to restart!";
+					this.isGameOver = true;
+					
+
 				}
 			}
 		} else {
-			this.warnDisp.textContent = "You didn't enter a valid letter. Please try again.";
+			// Check User Input
+			if(userGuess.match(/^[a-z]+$/)){
+				this.warnDisp.textContent = "You have already guessed " + userGuess;
+			} else {
+				// Else they didn't enter a valid key tell
+				this.warnDisp.textContent = "You didn't enter a valid letter. Please try again.";
+			}
 		}
 	}
 }
 
-// Start Game
-game.startGame(currentWordDisp, currentGuessDisp, winsDisp, guessLetterDisp, warningDisp);
+game.startGame(currentWordDisp,currentGuessDisp, winsDisp, guessLetterDisp, warningDisp);
 
-// Check User Input for Key pressed
+
 document.onkeyup = function(e){
-
 	// Check if Game is Over
 	if(game.isGameOver === false){
-		// Check User Input and see if they won
+		// Check User Input for Key pressed	
 		game.checkGuess(e.key);
 		game.displayGame();
 	} else {
@@ -132,5 +139,7 @@ document.onkeyup = function(e){
 		console.log("Restarted Game");
 		
 	}
-	
 }
+	
+
+
