@@ -26,26 +26,35 @@
 	<!-- Main Game Screen -->
 	<section>
 		<div class="wrapper">
+			<h2>Press Any Key to get started!</h2>
 			<div class="status">
 
-				<h3>Wins: <span id="wins"></span></h3>
+				<h3>Wins: </h3>
+				<p><span id="wins"></span></p>
+				<h3>Number of Guesses: </h3>
+				<div id="heart">
+					<p>
+						<span id="guesses"></span>
+					</p>
+				</div>
 			</div>
 			<div class="game-window">
-				<h2>Press Any Key to get started!</h2>
-				<p>Current Word: <span id="currentWord"></span></p>
+				<p>Current Word: </p>
+				<p><span id="currentWord"></span></p>
 			</div>
 
 			<div class="player-info">
-				<h3>Number of Guesses Remaining: <span id="guesses"></span></h3>
+				
 				<p>Letters already guessed</p>
 				<p><span id="guessedLetters"></span></p>
+				<p id="warning"></p>
 			</div>
 			
 			
 			
 			
 			
-			<p id="warning"></p>	
+				
 		</div>
 		
 	</section>

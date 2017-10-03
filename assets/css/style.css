@@ -6,13 +6,12 @@ body{
 	color: #fff;
 	background-color: #000;
 	font-family: "bradley_gratisregular", Arial, san-serif;
-	font-size: 18px;
+	font-size: 25px;
 }
 
 header{
-	height: 400px;
+	height: 300px;
 	width: 100%;
-	padding: 20px;
 }
 
 
@@ -22,7 +21,12 @@ h1{
 
 h2{
 	font-size: 200%;
+	margin-bottom: 20px;
 	/*color: blue;*/
+}
+
+div{
+	padding: 20px 30px;
 }
 
 /* Special Font for Game */
@@ -49,12 +53,84 @@ h2{
 }
 
 .logo{
-	margin-top: 175px;
+	margin-top: 100px;
 }
 
+.status{
+	float:left;
+	height: 200px;
+	width: 30%;
+	border: 3px solid #fff;
+}
 
+.game-window{
+	float: right;
+	height: 200px;
+	width: 70%;
+	border: 3px solid #fff;
+}
+
+.player-info{
+	clear: both;
+	width: 100%;
+	overflow: hidden;
+	height: 200px;
+	border: 3px solid #fff;
+}
 
 #currentWord{
 	text-transform: uppercase;
 }
 
+#guesses{
+	position: relative;
+	top: -17px;
+	left: -12px;
+	z-index: 1;
+}
+
+/* Special Heart Graphics for Guesses*/
+#heart {
+    position: relative;
+    margin-left: 36%;
+    margin-top: 10px;
+    width: 30px;
+    height: 40px;
+    z-index: -1;
+
+}
+#heart:before,
+#heart:after {
+    position: absolute;
+    content: "";
+    left: 24px;
+    top: 0;
+    width: 25px;
+    height: 35px;
+    background: red;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+#heart:after {
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
