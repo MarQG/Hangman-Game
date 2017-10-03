@@ -1,0 +1,60 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	color: #fff;
+	background-color: #000;
+	font-family: "bradley_gratisregular", Arial, san-serif;
+	font-size: 18px;
+}
+
+header{
+	height: 400px;
+	width: 100%;
+	padding: 20px;
+}
+
+
+h1{
+	font-size: 250%;
+}
+
+h2{
+	font-size: 200%;
+	/*color: blue;*/
+}
+
+/* Special Font for Game */
+
+@font-face {
+    font-family: 'bradley_gratisregular';
+    src: url('../fonts/bradley_gratis-webfont.woff2') format('woff2'),
+    	 url('../fonts/bradley_gratis.eot'),
+    	 url('../fonts/bradley_gratis.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bradley_gratis-webfont.woff') format('woff'),
+         url('../fonts/bradley_gratis.tff') format('truetype'),
+         url('../fonts/bradley_gratis.svg#webfont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* ====================== */
+
+.wrapper{
+	margin: 0 auto;
+	width: 960px;
+	text-align: center;
+}
+
+.logo{
+	margin-top: 175px;
+}
+
+
+
+#currentWord{
+	text-transform: uppercase;
+}
+

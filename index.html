@@ -9,20 +9,45 @@
 
 	<!-- Logo Header -->
 	<header>
-		<!-- Replace Later with Hangman Logo -->
-		<h1>Hangman</h1>
-		<!-- Replace later with Castlevania Logo -->
-		<h2>Castlevania Edition</h2>
+		<div class="wrapper">
+				
+			<div class="logo">
+				<!-- Replace Later with Hangman Logo -->
+				<h1>HANGMAN</h1>
+				<div class="subtitle">
+					<h2>Castlevania Edition</h2>
+				</div>
+			</div>
+			
+		</div>
+		
 	</header>
 
 	<!-- Main Game Screen -->
 	<section>
-		<h1>Press Any Key to get started!</h1>
-		<h3>Wins: <span id="wins"></span></h3>
-		<p>Current Word: <span id="currentWord"></span></p>
-		<h3>Number of Guesses Remaining: <span id="guesses"></span></h3>
-		<p>Letters already guessed: <span id="guessedLetters"></span></p>
-		<p id="warning"></p>
+		<div class="wrapper">
+			<div class="status">
+
+				<h3>Wins: <span id="wins"></span></h3>
+			</div>
+			<div class="game-window">
+				<h2>Press Any Key to get started!</h2>
+				<p>Current Word: <span id="currentWord"></span></p>
+			</div>
+
+			<div class="player-info">
+				<h3>Number of Guesses Remaining: <span id="guesses"></span></h3>
+				<p>Letters already guessed</p>
+				<p><span id="guessedLetters"></span></p>
+			</div>
+			
+			
+			
+			
+			
+			<p id="warning"></p>	
+		</div>
+		
 	</section>
 
 	<script type="text/javascript" src="assets/javascript/game.js"></script>

@@ -75,14 +75,14 @@ var game = {
 			// if it is we check it versus the current word
 			if(this.currentWord.includes(userGuess)){
 				
-					for(var i=0; i<this.currentWord.length; i++){
-				        if(this.currentWord.charAt(i)===userGuess){
-				          this.displayWord[i] = userGuess;
-				          this.lettersGuessed++;
-				          this.wordDisp.textContent = this.displayWord.join(" ");
-				          this.availableLetters = this.availableLetters.filter( a => a !== userGuess);
-				        }
-				    }
+				for(var i=0; i<this.currentWord.length; i++){
+			        if(this.currentWord.charAt(i)===userGuess){
+			          this.displayWord[i] = userGuess;
+			          this.lettersGuessed++;
+			          this.wordDisp.textContent = this.displayWord.join(" ");
+			          this.availableLetters = this.availableLetters.filter( a => a !== userGuess);
+			        }
+			    }
 
 			     
 
