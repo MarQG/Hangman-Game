@@ -10,7 +10,7 @@ var warningDisp = document.querySelector("#warning");
 
 //Game Object
 var game = {
-	availableWords: ["simon", "ricther", "zombie", "axeman", "alucard", "dracula", "maria", "belmont", "vampire", "trevor", "death", "soma"],
+	availableWords: ["simon", "ricther", "zombie", "axeman", "alucard", "dracula", "maria", "belmont", "vampire", "trevor", "death", "soma", "ferryman", "sypha", "isaac", "shaft", "librarian", "nathan", "gabriel"],
 	currentWord: "",
 	displayWord: [],
 	availableLetters: [],
