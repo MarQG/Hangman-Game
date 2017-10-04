@@ -124,6 +124,7 @@ var game = {
 					this.gameOverSound.play();
 					// if they dont then Game Over
 					this.warnDisp.textContent = "You lost! Press Any Key to restart!";
+					this.wins = 0;
 					this.isGameOver = true;
 					
 
