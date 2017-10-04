@@ -112,6 +112,10 @@ p{
 	text-transform: uppercase;
 }
 
+#warning{
+	font-size: 150%;
+}
+
 /* Special Heart Graphics for Guesses*/
 #heart {
     position: relative;
