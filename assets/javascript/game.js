@@ -5,45 +5,6 @@
 	Description: Creates a game object that plays Hangman Game with a Castlevania Based Theme
 */
 
-// ========== Javascript Setup ==========
-/*
-	This section is where we setup the javascript to grab the displays we are using in HTML.
-	We will pass the selected objects into the game object using the startGame method later.
-	
-	Aftewards we run the game.startGame() passing in the neccesary Display Hooks for the game object to use.
-	
-	Then we setup an onkeyup event on the DOM to get the user's input.
-
-	Finally we will check if the isGameOver is true and if not we will check the user's input and see if they
-	entered a valid guess.
-*/
-
-// Grab Display Hooks from HTML
-
-var currentWordDisp = document.querySelector("#currentWord");
-var currentGuessDisp = document.querySelector("#guesses");
-var winsDisp = document.querySelector("#wins");
-var guessLetterDisp = document.querySelector("#guessedLetters");
-var warningDisp = document.querySelector("#warning");
-
-// Starts Game
-game.startGame(currentWordDisp,currentGuessDisp, winsDisp, guessLetterDisp, warningDisp);
-
-// User Input Runs the game loop
-document.onkeyup = function(e){
-	// Check if Game is Over
-	if(game.isGameOver === false){
-		// Check User Input for Key pressed	
-		game.checkGuess(e.key);
-		game.displayGame();
-	} else {
-		// Restart the game
-		game.startGame(currentWordDisp,currentGuessDisp, winsDisp, guessLetterDisp, warningDisp);
-		console.log("Restarted Game");
-		
-	}
-}
-
 // ========== Hangman Game ==========
 var game = {
 	// ========== Game Variables ==========
@@ -244,6 +205,43 @@ var game = {
 		}
 	}
 }
-	
 
+// ========== Javascript Setup ==========
+/*
+	This section is where we setup the javascript to grab the displays we are using in HTML.
+	We will pass the selected objects into the game object using the startGame method later.
+	
+	Aftewards we run the game.startGame() passing in the neccesary Display Hooks for the game object to use.
+	
+	Then we setup an onkeyup event on the DOM to get the user's input.
+
+	Finally we will check if the isGameOver is true and if not we will check the user's input and see if they
+	entered a valid guess.
+*/
+
+// Grab Display Hooks from HTML
+
+var currentWordDisp = document.querySelector("#currentWord");
+var currentGuessDisp = document.querySelector("#guesses");
+var winsDisp = document.querySelector("#wins");
+var guessLetterDisp = document.querySelector("#guessedLetters");
+var warningDisp = document.querySelector("#warning");
+
+// Starts Game
+game.startGame(currentWordDisp,currentGuessDisp, winsDisp, guessLetterDisp, warningDisp);
+
+// User Input Runs the game loop
+document.onkeyup = function(e){
+	// Check if Game is Over
+	if(game.isGameOver === false){
+		// Check User Input for Key pressed	
+		game.checkGuess(e.key);
+		game.displayGame();
+	} else {
+		// Restart the game
+		game.startGame(currentWordDisp,currentGuessDisp, winsDisp, guessLetterDisp, warningDisp);
+		console.log("Restarted Game");
+		
+	}
+}
 
