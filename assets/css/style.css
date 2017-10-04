@@ -12,6 +12,7 @@ body{
 header{
 	height: 300px;
 	width: 100%;
+	margin-bottom: 20px;
 }
 
 
@@ -27,6 +28,10 @@ h2{
 
 div{
 	padding: 20px 30px;
+}
+
+p{
+	margin: 10px;
 }
 
 /* Special Font for Game */
@@ -52,22 +57,28 @@ div{
 	text-align: center;
 }
 
-.logo{
-	margin-top: 100px;
+.logo img{
+	width: 70%;
+	height: 70%;
 }
+
 
 .status{
 	float:left;
-	height: 200px;
+	height: 300px;
 	width: 30%;
 	border: 3px solid #fff;
 }
 
 .game-window{
 	float: right;
-	height: 200px;
+	height: 300px;
 	width: 70%;
 	border: 3px solid #fff;
+}
+
+.game-window p{
+	margin-top: 40px;
 }
 
 .player-info{
@@ -80,22 +91,34 @@ div{
 
 #currentWord{
 	text-transform: uppercase;
+	font-size: 250%;
 }
 
+#wins{
+	font-size: 250%;
+}
+
+/* Positions the Guesses in the Heart */
 #guesses{
 	position: relative;
-	top: -17px;
-	left: -12px;
+	top: -25px;
+	left: -5px;
+	font-size: 250%;
 	z-index: 1;
+}
+
+#guessedLetters{
+	font-size: 250%;
+	text-transform: uppercase;
 }
 
 /* Special Heart Graphics for Guesses*/
 #heart {
     position: relative;
-    margin-left: 36%;
+    margin-left: 23%;
     margin-top: 10px;
-    width: 30px;
-    height: 40px;
+    width: 100px;
+    height: 90px;
     z-index: -1;
 
 }
@@ -103,10 +126,10 @@ div{
 #heart:after {
     position: absolute;
     content: "";
-    left: 24px;
+    left: 50px;
     top: 0;
-    width: 25px;
-    height: 35px;
+    width: 50px;
+    height: 80px;
     background: red;
     -moz-border-radius: 50px 50px 0 0;
     border-radius: 50px 50px 0 0;

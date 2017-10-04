@@ -10,7 +10,7 @@ var warningDisp = document.querySelector("#warning");
 
 //Game Object
 var game = {
-	availableWords: ["simon", "ricther", "zombie", "axeman", "alucard", "dracula"],
+	availableWords: ["simon", "ricther", "zombie", "axeman", "alucard", "dracula", "maria", "belmont", "vampire", "trevor", "death", "soma"],
 	currentWord: "",
 	displayWord: [],
 	availableLetters: [],
@@ -24,6 +24,19 @@ var game = {
 	winDisp: {},
 	guessLtrDisp: {},
 	warnDisp: {},
+	goodGuess: new Howl({
+		src:['assets/sounds/22.wav'],
+	}),
+	badGuess:new Howl({
+		src:['assets/sounds/Blade Toss.wav'],
+	}),
+	gameOverSound: new Howl({
+		src:['assets/sounds/36.mp3'],
+	}),
+	// warningSound: new Howl({
+	// 	src:['assets/sounds/Candle Cut.wav'],
+	// 	buffer: true,
+	// }),
 	startGame: function(currentWordDisp, currentGuessDisp, winsDisp, guessLetterDisp, warningDisp){
 
 		// Initializes the Game So that a new round can be played when Game Over has happened.
@@ -84,6 +97,8 @@ var game = {
 			        }
 			    }
 
+
+			    this.goodGuess.play();
 			     
 
 			     
@@ -100,11 +115,13 @@ var game = {
 			} else {
 				// otherwise then we see if they still have guesses left
 				if(this.guesses > 0){
+					this.badGuess.play();
 					// if they do then we remove a guess and add their current guess to the list of guessed letters and remove from valid guesses
 					this.availableLetters = this.availableLetters.filter( a => a !== userGuess);
 					this.guesses--;
 					this.guessLtrDisp.textContent += userGuess + " " ;
 				} else {
+					this.gameOverSound.play();
 					// if they dont then Game Over
 					this.warnDisp.textContent = "You lost! Press Any Key to restart!";
 					this.isGameOver = true;
@@ -113,6 +130,7 @@ var game = {
 				}
 			}
 		} else {
+			//this.warningSound.play();
 			// Check User Input
 			if(userGuess.match(/^[a-z]+$/)){
 				this.warnDisp.textContent = "You have already guessed " + userGuess;
